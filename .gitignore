@@ -1,3 +1,4 @@
 # type here
 /node_modules
 /.idea
+package-lock.json
