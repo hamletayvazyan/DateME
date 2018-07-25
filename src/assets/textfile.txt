@@ -1,0 +1,4 @@
+{
+  "userUrl": "API/users/user.ts",
+  "textfile": "assets/textfile.txt"
+}

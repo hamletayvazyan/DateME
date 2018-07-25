@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']" *ngIf="login == false">{{ Title }}</a>
+  <a class="navbar-brand" [routerLink]="['/auth']" *ngIf="login == true">{{ Title }}</a>
+  <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" *ngIf="login === false">
+        <a class="nav-link" [routerLink]="['/profile']">Profile<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <form #form="ngForm" class="login form-group" novalidate>
+      <h4 *ngIf="login === false">
+        <a [routerLink]="['/profile']">{{ userLogin.email }}</a>
+      </h4>
+      <input #email="ngModel" required type="email" class="form-control" placeholder="Email" name="email"
+             pattern="[^ @]*@[^ @]*"
+             [class.danger]="email.touched && email.invalid"
+             *ngIf="login === true"
+             [(ngModel)]="userLogin.email">
+      <input #password="ngModel" required type="password" class="form-control" placeholder="password" name="password"
+             [class.danger]="password.touched && password.invalid"
+             *ngIf="login === true"
+             [(ngModel)]="userLogin.password">
+
+      <button #event type="submit" class="btn-secondary" (click)="ClickLogin(form.value); validateLogin($event)"
+              [disabled]="form.invalid">
+        Log {{ login ? 'in' : 'out' }}
+      </button>
+
+    </form>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<main class="container" role="main" *ngIf="router.url === '/' && login == false">
+  <div class="my-3 p-3 bg-white rounded box-shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+
+    <div class="suggestion">
+      <div class="media text-muted pt-3" *ngFor="let user of users">
+        <img src="../../assets/images/images.jpg" width="45" height="45" class="userImage">
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <button class="btn btn-link no-padding" (click)="openModalWithClass(template, user)"><strong
+              class="text-gray-dark">{{ user.name }}</strong></button>
+            <a href="#">Follow</a>
+          </div>
+          <span class="d-block">{{ user.gender }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #template>
+      <div class="modal-header">
+        <img src="../../assets/images/images.jpg" width="45" height="45" class="userImage">
+        <h4 class="modal-title pull-left">{{ selectId.name }}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Last Name: <strong>{{ selectId.lastName }}</strong></li>
+          <li class="list-group-item">About: <strong>{{ selectId.about }}</strong></li>
+          <li class="list-group-item">Gender: <strong>{{ selectId.gender }}</strong></li>
+          <li class="list-group-item">Weight: <strong>{{ selectId.weight }}</strong></li>
+        </ul>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Length: <strong>{{ selectId.length }}</strong></li>
+          <li class="list-group-item">Hobbies: <strong>{{ selectId.hobbies }}</strong></li>
+          <li class="list-group-item">Skin Color: <strong>{{ selectId.skinColor }}</strong></li>
+          <li class="list-group-item">Favorite animal: <strong>{{ selectId.favoriteAnimal }}</strong></li>
+          <li class="list-group-item">Age: <strong>{{ selectId.age }}</strong></li>
+          <li class="list-group-item"></li>
+        </ul>
+      </div>
+    </ng-template>
+
+    <small class="d-block text-right mt-3">
+      <a href="#">All suggestions</a>
+    </small>
+  </div>
+
+</main>
+

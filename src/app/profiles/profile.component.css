@@ -1,0 +1,60 @@
+.header {
+  background-color: #343a40;
+  text-align: right;
+}
+.header img {
+  border-radius: 50%;
+}
+.header div {
+  margin-left: 10px;
+  display: inline-block;
+}
+.list-group {
+  width: 49%;
+  display: inline-flex;
+}
+.modal-body form label{
+  color: black;
+}
+.modal-body form input{
+  background-color: #343a40;
+  border-color: #17a2b863;
+  width: 100%;
+}
+.selectLen select, .selectWeight select{
+  border: none;
+  border-bottom: 2px solid #17a2b863!important;
+}
+.selectLen, .selectWeight {
+  display: inline-block;
+  width: 49%;
+}
+.edit {
+  width: 50%;
+  display: inline-flex;
+}
+.edit input {
+  padding: 0 0.75rem!important;
+}
+.edit button{
+  padding: 0 0.5rem!important;
+}
+.editButton{
+  float: right;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+.hide {
+   display: none;
+ }
+.show {
+  display: inline-flex;
+}
+.list-group-item:first-child {
+  border-top: 0;
+}
+.list-group-flush .list-group-item {
+  line-height: 30px;
+}

@@ -1,0 +1,128 @@
+<main role="main" class="container">
+
+  <!--Profile General detail-->
+
+  <form #form="ngForm" name="form">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+
+      <!--Profile Header-->
+      <div class="align-items-center p-3 text-white-50 bg-purple rounded box-shadow header">
+        <img src="../../assets/images/images.jpg" alt="" width="100" height="100">
+        <div>
+          <h6>Username {{ userProfileUpdate.firstName }}</h6>
+          <small>2018</small>
+        </div>
+      </div>
+
+      <!--Route Buttons-->
+      <div class="bg-info clearfix my-3 text-center">
+        <button type="button" class="btn btn-secondary float-left"
+                [routerLink]="['/profiles']">
+          Profile
+        </button>
+        <button type="button" class="btn btn-secondary" *ngIf="edit" (click)="confirm(editForm.value)">
+          save
+        </button>
+        <button type="button" class="btn btn-secondary float-right"
+                (click)="EditToggle()">
+          Edit Profile
+        </button>
+
+      </div>
+
+      <!--Profile details-->
+
+      <form #editForm="ngForm">
+
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item ">First Name: {{ userProfileUpdate.firstName }}
+            <div class="input-group edit float-right" *ngIf="edit" >
+              <input type="text" class="form-control" placeholder="first name"
+                     #fistName [(ngModel)]="profileDetail.firstName" name="firstName"
+                     >
+            </div>
+          </li>
+          <li class="list-group-item">Last Name: {{ userProfileUpdate.lastName }}
+            <div class="input-group edit float-right" *ngIf="edit">
+              <input type="text" class="form-control" placeholder="last name"
+                     #lastName [(ngModel)]=" profileDetail.lastName" name="lastName"
+              >
+            </div>
+          </li>
+          <li class="list-group-item">About Me: {{ userProfileUpdate.aboutMe }}
+            <div class="input-group edit float-right" *ngIf="edit">
+              <input type="text" class="form-control" placeholder="about me"
+                     #about [(ngModel)]=" profileDetail.aboutMe" name="aboutMe"
+              >
+            </div>
+          </li>
+          <li class="list-group-item">Gender: {{ userProfileUpdate.gender }}
+            <div class="radio edit float-right" #gender *ngIf="edit">
+              <label>
+                <input type="radio" name="gender" value="male"
+                       [(ngModel)]="profileDetail.gender">
+                Male
+              </label>
+              <label>
+                <input type="radio" name="gender" value="female"
+                       [(ngModel)]="profileDetail.gender">
+                Female
+              </label>
+            </div>
+          </li>
+          <li class="list-group-item">Weight: {{ userProfileUpdate.weight }} kg.
+            <div class="selectWeight edit float-right" *ngIf="edit">
+              <select type="text" name="weight" [(ngModel)]="profileDetail.weight">
+                <option selected>Select Weight</option>
+                <option *ngFor="let count of countWeigth" value="{{ count }}">{{ count }}</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Length: {{ userProfileUpdate.Length }} sm
+            <div class="selectLen edit float-right" *ngIf="edit">
+              <select type="text" name="Length" class="input-group" [(ngModel)]="profileDetail.Length">
+                <option selected>Select Length</option>
+                <option *ngFor="let count of countLen" value="{{count}}">{{count}}</option>
+              </select>
+            </div>
+          </li>
+
+          <li class="list-group-item">Hobbies: {{ userProfileUpdate.hobbies }}
+            <div class="input-group edit float-right"  *ngIf="edit">
+              <input type="text" class="form-control" placeholder="hobbies"
+                     #hobbies [(ngModel)]=" profileDetail.hobbies" name="hobbies"
+              >
+            </div>
+          </li>
+          <li class="list-group-item">Skin Color: {{ userProfileUpdate.skinColor }}
+            <div class="input-group edit float-right" *ngIf="edit">
+              <input type="color" class="form-control" placeholder="skin color"
+                     #skinColor [(ngModel)]=" profileDetail.skinColor" name="skinColor"
+              >
+            </div>
+          </li>
+          <li class="list-group-item">Favorite animal: {{ userProfileUpdate.favoriteAnimal }}
+            <div class="input-group edit float-right" *ngIf="edit">
+              <input type="text" class="form-control" placeholder="favorite animal"
+                     #favoriteAnimal [(ngModel)]=" profileDetail.favoriteAnimal" name="favoriteAnimal"
+              >
+            </div>
+          </li>
+          <li class="list-group-item">Age: {{ userProfileUpdate.age }}
+            <div class="input-group edit float-right" *ngIf="edit">
+              <input style="line-height: 24px" type="date" min="1900-01-01" max="2000-01-01"
+                     [(ngModel)]="profileDetail.age" name="age"
+                     class="input-group">
+            </div>
+          </li>
+          <li class="list-group-item"></li>
+        </ul>
+
+      </form>
+    </div>
+  </form>
+</main>

@@ -1,0 +1,59 @@
+<form #forms="ngForm" class="form-auth">
+
+  <!-- Login / password -->
+  <div>
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign Up</h1>
+    <label class="control-label">Email</label>
+    <input #emailAdress="ngModel"  type="email" class="form-control" placeholder="Email address" pattern="[^ @]*@[^ @]*" required
+           name="emailAdress"
+           [class.danger]="emailAdress.touched && emailAdress.invalid"
+           [(ngModel)]="auth.email">
+    <label class="control-label">Password</label>
+    <input #password="ngModel" required type="password" class="form-control" placeholder="Password" name="password"
+           [class.danger]="password.touched && password.invalid"
+           [(ngModel)]="auth.password">
+    <label class="control-label">Confirm Password</label>
+    <input #rePassword="ngModel" required type="password" id="confirmPassword" class="form-control"
+           placeholder="Confirm Password" name="rePassword"
+           [class.danger]="rePassword.touched && rePassword.invalid"
+           [(ngModel)]="auth.rePassword">
+  </div>
+  <!-- BirthDay -->
+
+  <div class="form-group birthDay">
+    <label>BirthDay</label>
+    <input #birthDayValue="ngModel" type="date" name="birthDayValue" required class="form-control" min="1900-01-01"
+           max="2000-01-01"
+           [class.asd]="birthDayValue.touched && birthDayValue.invalid"
+           [(ngModel)]="auth.birthDay">
+  </div>
+
+
+  <!-- Gender Radio-->
+
+  <div class="form-group gender">
+    <label>Gender</label>
+    <div class="radio">
+      <label>
+        <input type="radio" name="gender" value="Male" required
+               [(ngModel)]="auth.gender">
+        Male
+      </label>
+      <label>
+        <input type="radio" name="gender" value="Female" required
+               [(ngModel)]="auth.gender">
+        Female
+      </label>
+    </div>
+  </div>
+
+  <!-- Sign Up button -->
+  <button #signUp type="submit" class="btn btn-lg btn-secondary btn-block"
+          (click)="signUpVal(forms.value)"
+          [disabled]="forms.invalid"
+          [routerLink]="['/']">
+    Sign up
+  </button>
+
+  <p class="mt-5 mb-3 text-muted">&copy; developed by Hamlet Ayvazyan 2018</p>
+</form>

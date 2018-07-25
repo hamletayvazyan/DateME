@@ -1,0 +1,50 @@
+
+.navbar {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.login input{
+  display: inline-block;
+  width: auto;
+  padding: 3px 7px;
+  border-radius: 5px;
+  background-color: #1f2029;
+  border-color: #1f2029b8;
+}
+.login button{
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 2px 15px;
+  border-radius: 5px;
+}
+
+.login h4 {
+  display: inline-block;
+  margin-right: 5px;
+}
+.login h4 a:hover {
+color: gray;
+  transition: 1s;
+}
+.login h4 a {
+  transition: 1s;
+  color: white;
+  text-decoration: none;
+}
+.userImage{
+  border-radius: 50%;
+}
+.suggestion  .media {
+  width: 50%;
+  padding: 0 15px 0 0;
+  display: -ms-flexbox;
+  display: inline-flex;
+  -ms-flex-align: start;
+}
+.suggestion .small {
+  margin-left: 10px;
+}
+.modal-title{
+  color: white;
+  margin-left: 10px;
+}
